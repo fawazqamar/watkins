@@ -4,8 +4,8 @@ const menuToggle = document.getElementById("menu-toggle");
 const menu = document.querySelector(".menu");
 const navContainer = document.querySelector(".nav-container");
 const menuLayer = document.querySelector(".menu-layer");
-const hasSubMenu = document.querySelectorAll(".has-submenu > a");
-const subMenuInner = document.querySelectorAll(".submenu");
+const hasSubMenu = document.querySelectorAll(".has-submenu > a, .menu-item-has-children > a");
+const subMenuInner = document.querySelectorAll(".submenu, .sub-menu");
 const menuWrapper = document.querySelector(".menu-wrapper");
 const menuLinks = document.querySelectorAll(".menu a");
 const menuItem = document.querySelectorAll(".menu-item"); // Select all links in the menu
@@ -76,7 +76,7 @@ const applyAnimations = () => {
 const toggleMenu = () => {
   const animations = applyAnimations();
 
-  document.querySelectorAll(".submenu").forEach((sub) => {
+  document.querySelectorAll(".submenu, .sub-menu").forEach((sub) => {
     sub.style.display = "none";
   });
 
@@ -114,7 +114,7 @@ const handleSubMenuClick = (e, submenulink) => {
   if (submenulink.style.display === "block") {
     submenulink.style.display = "none";
   } else {
-    document.querySelectorAll(".submenu").forEach((sub) => {
+    document.querySelectorAll(".submenu, .sub-menu").forEach((sub) => {
       sub.style.display = "none";
     });
     submenulink.style.display = "block";
@@ -171,7 +171,7 @@ menuItem.forEach((item) => {
     // Add 'active' class to the clicked item
     item.classList.add("active");
     // this.style.fontWeight = 'bold';
-    document.querySelectorAll(".submenu").forEach((sub) => {
+    document.querySelectorAll(".submenu, .sub-menu").forEach((sub) => {
       sub.style.display = "none";
     });
   });

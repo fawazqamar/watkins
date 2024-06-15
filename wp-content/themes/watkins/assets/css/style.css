@@ -676,7 +676,7 @@ img#heart {
   transform: rotate(45deg) translate(-5px, -3px);
 }
 
-.submenu {
+.submenu, .sub-menu {
   /* display: none; */
   position: absolute;
   left: 101%;
@@ -713,7 +713,7 @@ img#heart {
     padding-left: 5%;
     padding-right: 5%;
   }
-  .submenu {
+  .submenu, .sub-menu {
     /* display: none; */
     position: relative;
     top: 0;

@@ -9,123 +9,103 @@
  * @package Watkins
  */
 
+$footer_logos        = get_field( 'footer_logos', 'option' );
+$footer_blocks       = get_field( 'footer_blocks', 'option' );
+$footer_links        = get_field( 'footer_links', 'option' );
+$footer_social_links = get_field( 'footer_social_links', 'option' );
 ?>
 
 <!-- footer Section -->
 <footer class="bg-main footer-container">
-    <section class="footer-logos">
-        <img src="<?php bloginfo('template_url'); ?>/assets/images/Asset 5.png" alt="" />
-        <img src="<?php bloginfo('template_url'); ?>/assets/images/Asset 5.png" alt="" />
-        <img src="<?php bloginfo('template_url'); ?>/assets/images/Asset 6.png" alt="" />
-    </section>
+
+	<?php if ( $footer_logos ) : ?>
+        <section class="footer-logos">
+			<?php foreach ( $footer_logos as $footer_logo ) : $image = ( isset( $footer_logo['image'] ) && ! empty( $footer_logo['image'] ) ) ? $footer_logo['image'] : null;
+				if ( empty( $image ) ) {
+					continue;
+				}
+				?>
+                <img src="<?php echo esc_url( $image['url'] ); ?>"
+                     alt="<?php echo esc_attr( $image['alt'] ); ?>"/>
+			<?php endforeach; ?>
+        </section>
+	<?php endif; ?>
+
     <div class="footer-links">
-        <ul class="f-links">
-            <li class="link-item">
-                <h3>Nailsea Practice</h3>
-                <ul>
-                    <li>65 High Street<span class="period">,</span></li>
-                    <li>Nailsea<span class="period">,</span></li>
-                    <li class="footer-link-mobile-block">North Somerset</li>
-                    <li>BS48 1AW</li>
-                </ul>
-                <a href="tel:">01275 858 628 </a>
-                <a href="mail:nailsea@watkins-tasker-vets.co.uk"
-                >nailsea@watkins-tasker-vets.co.uk</a
-                >
-            </li>
-            <li class="link-item">
-                <h3>Portishead Practice</h3>
-                <ul>
-                    <li>Harbour Road <span class="period">,</span></li>
-                    <li>Portishead <span class="period">,</span></li>
-                    <li class="footer-link-mobile-block">
-                        North Somerset <span class="period">,</span>
+		<?php if ( $footer_blocks ) : ?>
+            <ul class="f-links">
+				<?php foreach ( $footer_blocks as $footer_block ) : ?>
+                    <li class="link-item">
+                        <h3><?php echo $footer_block['location_heading']; ?></h3>
+                        <ul>
+                            <li><?php echo $footer_block['location_address']; ?></li>
+                        </ul>
+                        <a href="tel:"><?php echo $footer_block['location_number']; ?> </a>
+                        <a href="mail:<?php echo $footer_block['location_email_address']; ?>">
+							<?php echo $footer_block['location_email_address']; ?>
+                        </a>
                     </li>
-                    <li>BS20 7BL</li>
-                </ul>
-                <a href="tel:">01275 397 449 </a>
-                <a href="mail:portishead@watkins-tasker-vets.co.uk">
-                    portishead@watkins-tasker-vets.co.uk
-                </a>
-            </li>
-            <li class="link-item">
-                <h3>Yatton Practice</h3>
-                <ul>
-                    <li>57 High Street<span class="period">,</span></li>
-                    <li>Yatton<span class="period">,</span></li>
-                    <li class="footer-link-mobile-block">North Somerset</li>
-                    <li>BS49 4EQ</li>
-                </ul>
-                <a href="tel:">01934 833 685 </a>
-                <a href="mail:yatton@watkins-tasker-vets.co.uk">
-                    yatton@watkins-tasker-vets.co.uk</a
-                >
-            </li>
-            <li class="link-item">
-                <h3>Hydro.vet</h3>
-                <ul>
-                    <li>Harbour Road<span class="period">,</span></li>
-                    <li>Portishead<span class="period">,</span></li>
-                    <li class="footer-link-mobile-block">North Somerset</li>
-                    <li>BS20 7BL</li>
-                </ul>
-                <a href="tel:">01275 405 905</a>
-                <a href="mail:info@hydro.vetk"> info@hydro.vet</a>
-            </li>
-        </ul>
+				<?php endforeach; ?>
+            </ul>
+		<?php endif; ?>
+
         <div class="footer-nav">
-            <ul class="footer-nav-links">
-                <li>
-                    <a href=""> Terms and conditions </a>
-                </li>
-                <li>
-                    <a href=""> Human rights and modern slavery statement </a>
-                </li>
-                <li>
-                    <a href=""> Practice ownership </a>
-                </li>
-                <li>
-                    <a href=""> Vacancies </a>
-                </li>
-                <li>
-                    <a href=""> Privacy policy </a>
-                </li>
-                <li>
-                    <a href=""> Sitemap </a>
-                </li>
-            </ul>
-            <ul class="social-links">
-                <li>
-                    <a href="" class="link-twitter">
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="link">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="link-facebook">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="link">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="link">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="" class="link-telegram">
-                        <i class="fa-brands fa-telegram"></i>
-                    </a>
-                </li>
-            </ul>
+
+			<?php if ( $footer_links ) : ?>
+                <ul class="footer-nav-links">
+					<?php foreach ( $footer_links as $footer_link ) : $link = ( isset( $footer_link['link'] ) ) ? $footer_link['link'] : null; ?>
+                        <li>
+                            <a href="<?php echo $link['url']; ?>" target="<?php echo $link['target']; ?>"
+                               title="<?php echo $link['title']; ?>"> <?php echo $link['title']; ?> </a>
+                        </li>
+					<?php endforeach; ?>
+                </ul>
+			<?php endif; ?>
+
+
+	        <?php if ( $footer_social_links ) : ?>
+                <ul class="social-links">
+                    <?php foreach ( $footer_social_links as $footer_social_link ) : $link = ( isset( $footer_social_link['link'] ) ) ? $footer_social_link['link'] : null;  ?>
+
+                    <?php
+                    echo '<li>';
+                        //  add switch
+
+                    if($link == 'twitter'){
+                        $icon = '<a href="#" class="link-twitter"><i class="fa-brands fa-x-twitter"></i></a>';
+                    }
+                    if($link == 'insta'){
+                        $icon = '<a href="#" class="link"><i class="fa-brands fa-instagram"></i></a>';
+                    }
+                    if($link == 'fb'){
+                        $icon = '<a href="#" class="link-facebook"><i class="fa-brands fa-facebook-f"></i></a>';
+                    }
+                    if($link == 'ws'){
+                        $icon = '<a href="#" class="link"><i class="fa-brands fa-whatsapp"></i></a>';
+                    }
+                    if($link == 'in'){
+                        $icon = '<a href="#" class="link"><i class="fa-brands fa-linkedin-in"></i></a>';
+
+                    }
+                    if($link == 'tg'){
+                        $icon = '<a href="#" class="link-telegram"><i class="fa-brands fa-telegram"></i></a>';
+                    }
+                    echo $icon;
+
+
+
+                        echo '</li>';
+
+                        ?>
+
+
+                    <?php endforeach; ?>
+                </ul>
+
+	        <?php endif; ?>
+
+
+
         </div>
     </div>
 </footer>

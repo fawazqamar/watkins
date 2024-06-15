@@ -1,16 +1,16 @@
 <?php
 /**
- * Template Name: Home Template
+ * Template Name: Hydrovet Template
  */
 
 get_header();
 ?>
-    <section class="container home-body">
+    <section class="container">
 		<?php if ( have_rows( 'pages_block_components' ) ) :
 			while ( have_rows( 'pages_block_components' ) ) : the_row();
 
 				if ( get_row_layout() == 'blocks_2col' ) {
-					include get_theme_file_path( 'template-parts/components/text-2col.php' );
+					include get_theme_file_path( 'template-parts/components/text-2col-hydro.php' );
 				}
 				if ( get_row_layout() == 'carousel_block' ) {
 					include get_theme_file_path( 'template-parts/components/carousel.php' );
