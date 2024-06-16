@@ -196,3 +196,96 @@ function watkins_enqueue_styles() {
 		true
 	);
 }
+
+/*
+* Creating a function to create our CPT
+*/
+
+function custom_post_type() {
+
+// Set UI labels for Custom Post Type
+	$labels = array(
+		'name'                => _x( 'Teams', 'Post Type General Name', 'watkins' ),
+		'singular_name'       => _x( 'Team', 'Post Type Singular Name', 'watkins' ),
+		'menu_name'           => __( 'Teams', 'watkins' ),
+		'parent_item_colon'   => __( 'Parent Team', 'watkins' ),
+		'all_items'           => __( 'All Teams', 'watkins' ),
+		'view_item'           => __( 'View Team', 'watkins' ),
+		'add_new_item'        => __( 'Add New Team', 'watkins' ),
+		'add_new'             => __( 'Add New', 'watkins' ),
+		'edit_item'           => __( 'Edit Team', 'watkins' ),
+		'update_item'         => __( 'Update Team', 'watkins' ),
+		'search_items'        => __( 'Search Team', 'watkins' ),
+		'not_found'           => __( 'Not Found', 'watkins' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'watkins' ),
+	);
+
+// Set other options for Custom Post Type
+
+	$args = array(
+		'label'               => __( 'teams', 'watkins' ),
+		'description'         => __( 'Team news and reviews', 'watkins' ),
+		'labels'              => $labels,
+		// Features this CPT supports in Post Editor
+		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+		// You can associate this CPT with a taxonomy or custom taxonomy. 
+//		'taxonomies'          => array( 'genres' ),
+		/* A hierarchical CPT is like Pages and can have
+		* Parent and child items. A non-hierarchical CPT
+		* is like Posts.
+		*/
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 5,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'post',
+		'show_in_rest' => true,
+
+	);
+
+	// Registering your Custom Post Type
+	register_post_type( 'teams', $args );
+
+	/**
+	 * Add industry taxonomy for Franchises.
+	 */
+	$team_tax = array(
+		'name' => __('Team Categories', 'sage'),
+		'singular_name' => __('Category', 'sage'),
+		'search_items' =>  __('Search Team Categories', 'sage'),
+		'all_items' => __('All Team Categories', 'sage'),
+		'parent_item' => __('Parent Category', 'sage'),
+		'parent_item_colon' => __('Parent Category:', 'sage'),
+		'edit_item' => __('Edit Category', 'sage'),
+		'update_item' => __('Update Category', 'sage'),
+		'add_new_item' => __('Add New Category', 'sage'),
+		'new_item_name' => __('New Category Name', 'sage'),
+		'menu_name' => __('Team Categories', 'sage'),
+	);
+	register_taxonomy('team_categories', array('teams'), array(
+		'hierarchical' => true,
+		'labels' => $team_tax,
+		'show_ui' => true,
+		'show_in_rest' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'team_category' ),
+	));
+
+
+
+}
+
+/* Hook into the 'init' action so that the function
+* Containing our post type registration is not 
+* unnecessarily executed. 
+*/
+
+add_action( 'init', 'custom_post_type', 0 );
