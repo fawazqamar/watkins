@@ -481,6 +481,10 @@ em {
   }
 }
 
+.footer-container .footer-links .link-item p {
+  font-size: 1.1rem;
+}
+
 @media (max-width: 767px) {
   .footer-link-mobile-block {
     display: none;

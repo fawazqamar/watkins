@@ -1,10 +1,15 @@
 <?php
 $carousel_items = get_sub_field( 'carousel_item' );
 $links          = get_sub_field( 'links' );
+
+$carousel_class = '';
+if( isset($page_label) && $page_label == 'hydrovet' ) {
+    $carousel_class = 'hydro-carousel';
+}
 ?>
 
 <?php if ( $carousel_items ) : ?>
-    <div class="carousel-container">
+    <div class="carousel-container <?php echo $carousel_class ;?>">
         <div class="owl-slider">
 
             <div class="owl-carousel owl-theme">

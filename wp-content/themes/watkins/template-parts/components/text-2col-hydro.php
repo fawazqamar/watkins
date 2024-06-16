@@ -9,9 +9,7 @@ $right_desc              = get_sub_field( 'right_desc' );
 
     <div class="hydro-intro">
 		<?php if ( $large_heading ) : ?>
-
 			<?php echo $large_heading; ?>
-
 		<?php endif; ?>
 
 		<?php echo $desc; ?>
