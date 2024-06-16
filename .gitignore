@@ -1,0 +1,11 @@
+/wp-content/uploads/**
+/.htaccess
+/wp-config.php
+/wp-content/mu-plugins
+db_import/*.sql
+**/node_modules
+.env
+.idea
+wp-content/cache/**
+wp-content/wflogs/**
+/wp-content/**/*.zip
