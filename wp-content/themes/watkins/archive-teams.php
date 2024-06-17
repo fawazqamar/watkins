@@ -30,7 +30,7 @@ get_header();
             <!-- filters -->
             <ul class="team-filter">
                 <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/heart.png" alt="watkins-logo"/>
                     <button
                             class="filter-btn active"
                             data-filter="all">
@@ -38,21 +38,21 @@ get_header();
                     </button>
                 </li>
                 <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/heart.png" alt="watkins-logo"/>
                     <button
                             class="filter-btn">
                         Vet team
                     </button>
                 </li>
                 <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/heart.png" alt="watkins-logo"/>
                     <button
                             class="filter-btn">
                         Nursing team
                     </button>
                 </li>
                 <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/heart.png" alt="watkins-logo"/>
                     <button
                             class="filter-btn">
                         Admin team
@@ -60,7 +60,7 @@ get_header();
                 </li>
                 <li><span class="divider"></span></li>
                 <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/heart.png" alt="watkins-logo"/>
                     <button
                             class="filter-btn">
                         Vacancies
@@ -74,7 +74,7 @@ get_header();
                     <ul class="team-carousel team">
                         <a class="member" data-category="vet" href="../pages/member.html">
                             <img
-                                    src="../assets/images/placeholder.png"
+                                    src="<?php bloginfo('template_url'); ?>/assets/images/placeholder.png"
                                     alt=""
                                     class="member-image"/>
                             <div class="member-details">
@@ -85,7 +85,7 @@ get_header();
                             </div>
                         </a>
                         <a class="member" data-category="vet" href="../pages/member.html">
-                            <img src="../assets/images/placeholder.png" alt=""/>
+                            <img src="<?php bloginfo('template_url'); ?>/assets/images/placeholder.png" alt=""/>
 
                             <div class="member-details">
                                 <h3 class="member-name">Test User</h3>
@@ -95,7 +95,7 @@ get_header();
                             </div>
                         </a>
                         <a class="member" data-category="vet" href="../pages/member.html">
-                            <img src="../assets/images/placeholder.png" alt=""/>
+                            <img src="<?php bloginfo('template_url'); ?>/assets/images/placeholder.png" alt=""/>
 
                             <div class="member-details">
                                 <h3 class="member-name">Test User</h3>
@@ -105,7 +105,7 @@ get_header();
                             </div>
                         </a>
                         <li class="member" data-category="vet">
-                            <img src="../assets/images/placeholder.png" alt=""/>
+                            <img src="<?php bloginfo('template_url'); ?>/assets/images/placeholder.png" alt=""/>
 
                             <div class="member-details">
                                 <h3 class="member-name">Test User</h3>
@@ -118,10 +118,10 @@ get_header();
                 </div>
                 <div class="btn-wrap mt-2">
                     <button class="prev-btn">
-                        <img src="../assets/images/Asset 3.png" alt=""/>
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/Asset 3.png" alt=""/>
                     </button>
                     <button class="next-btn">
-                        <img src="../assets/images/Asset 3.png" alt=""/>
+                        <img src="<?php bloginfo('template_url'); ?>/assets/images/Asset 3.png" alt=""/>
                     </button>
                 </div>
             </div>

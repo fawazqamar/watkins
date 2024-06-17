@@ -22,99 +22,87 @@ $teams_desc    = get_field( 'teams_desc' );
         <div class="team-container">
             <!-- filters -->
             <ul class="team-filter">
+
                 <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
-                    <button
-                            class="filter-btn active"
-                            data-filter="all">
-                        All
-                    </button>
+                    <img src="<?php bloginfo( 'template_url' ); ?>/assets/images/heart.png" alt="watkins-logo"/>
+                    <button class="filter-btn active" data-filter="all">All</button>
                 </li>
-                <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
-                    <button
-                            class="filter-btn">
-                        Vet team
-                    </button>
-                </li>
-                <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
-                    <button
-                            class="filter-btn">
-                        Nursing team
-                    </button>
-                </li>
-                <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
-                    <button
-                            class="filter-btn">
-                        Admin team
-                    </button>
-                </li>
-                <li><span class="divider"></span></li>
-                <li>
-                    <img src="../assets/images/heart.png" alt="watkins-logo"/>
-                    <button
-                            class="filter-btn">
-                        Vacancies
-                    </button>
-                </li>
+
+				<?php
+
+				$terms = get_terms( [
+					'taxonomy'   => 'team_categories',
+					'hide_empty' => false,
+				] );
+
+				foreach ( $terms as $term ) {
+					echo '<li>';
+					echo '<img src="' . get_bloginfo( 'template_url',
+							'display' ) . '/assets/images/heart.png" alt="watkins-logo"/>';
+					echo '<button class="filter-btn" data-filter="' . $term->slug . '">' . $term->name . '</button>';
+					echo '</li>';
+				}
+
+				?>
+
             </ul>
             <!-- team members -->
+
             <!-- <div class="team-carousel"> -->
             <div class="team-members-container">
                 <div class="team-carousel">
                     <ul class="team-carousel team">
-                        <a class="member" data-category="vet" href="../pages/member.html">
-                            <img
-                                    src="../assets/images/placeholder.png"
-                                    alt=""
-                                    class="member-image"/>
-                            <div class="member-details">
-                                <h3 class="member-name">Test User</h3>
-                                <p class="member-profession">software developer</p>
-                                <span class="divider"></span>
-                                <p class="member-designation">Owner</p>
-                            </div>
-                        </a>
-                        <a class="member" data-category="vet" href="../pages/member.html">
-                            <img src="../assets/images/placeholder.png" alt=""/>
 
-                            <div class="member-details">
-                                <h3 class="member-name">Test User</h3>
-                                <p class="member-profession">software developer</p>
-                                <span class="divider"></span>
-                                <p class="member-designation">Owner</p>
-                            </div>
-                        </a>
-                        <a class="member" data-category="vet" href="../pages/member.html">
-                            <img src="../assets/images/placeholder.png" alt=""/>
+						<?php
 
-                            <div class="member-details">
-                                <h3 class="member-name">Test User</h3>
-                                <p class="member-profession">software developer</p>
-                                <span class="divider"></span>
-                                <p class="member-designation">Owner</p>
-                            </div>
-                        </a>
-                        <li class="member" data-category="vet">
-                            <img src="../assets/images/placeholder.png" alt=""/>
+						//get posts from custom post type teams
+						$args  = array(
+							'post_type'      => 'teams',
+							'posts_per_page' => - 1,
+						);
+						$query = new WP_Query( $args );
 
-                            <div class="member-details">
-                                <h3 class="member-name">Test User</h3>
-                                <p class="member-profession">software developer</p>
-                                <span class="divider"></span>
-                                <p class="member-designation">Owner</p>
-                            </div>
-                        </li>
+
+						if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
+
+							$team_categories = get_the_terms( get_the_ID(), 'team_categories' );
+
+							?>
+
+                            <li class="member" data-category="<?php echo $team_categories[0]->slug; ?>">
+                                <a href="<?php the_permalink() ;?>">
+                                    <div class="member-img-container">
+                                        <img class="default-img"
+                                             src="<?php echo get_the_post_thumbnail_url( get_the_ID() ); ?>"
+                                             alt="<?php the_title(); ?>"/>
+										<?php $image = get_field( 'hover_image', get_the_ID() ); ?>
+										<?php if ( $image && is_array( $image ) ) : ?>
+                                            <img class="hover-img" src="<?php echo esc_url( $image['url'] ); ?>"
+                                                 alt="<?php echo esc_attr( $image['alt'] ); ?>"/>
+										<?php endif; ?>
+
+                                    </div>
+
+                                    <div class="member-details">
+                                        <h3 class="member-name"><?php the_title(); ?></h3>
+                                        <p class="member-profession"><?php the_field( 'member_role' ); ?></p>
+                                        <span class="divider"></span>
+                                        <p class="member-designation"><?php the_field( 'member_designation' ); ?></p>
+                                    </div>
+                                </a>
+                            </li>
+
+						<?php endwhile; endif;
+						wp_reset_postdata(); ?>
+
                     </ul>
                 </div>
                 <div class="btn-wrap mt-2">
                     <button class="prev-btn">
-                        <img src="../assets/images/Asset 3.png" alt=""/>
+                        <img src="<?php bloginfo( 'template_url' ); ?>/assets/images/Asset 3.png" alt=""/>
                     </button>
                     <button class="next-btn">
-                        <img src="../assets/images/Asset 3.png" alt=""/>
+                        <img src="<?php bloginfo( 'template_url' ); ?>/assets/images/Asset 3.png" alt=""/>
                     </button>
                 </div>
             </div>
