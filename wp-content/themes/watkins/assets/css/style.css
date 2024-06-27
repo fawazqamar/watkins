@@ -161,7 +161,7 @@ h1 {
   font-size: 3rem;
   color: rgb(229, 0, 100);
 }
-.page-desc {
+.page-desc, .page-desc p {
   color: #1c1744;
   font-size: 3rem;
   font-family: "Effra_Lite";
@@ -2368,7 +2368,7 @@ iframe {
   .page-heading {
     font-size: 2.3rem;
   }
-  .page-desc {
+  .page-desc, .page-desc p  {
     font-size: 1.7rem;
   }
   .accordion-header {
@@ -2381,7 +2381,7 @@ iframe {
   .page-heading {
     font-size: 2rem;
   }
-  .page-desc {
+  .page-desc , .page-desc p {
     font-size: 1.5rem;
   }
   .accordion-header {
@@ -2394,7 +2394,7 @@ iframe {
   .page-heading {
     font-size: 1.7rem;
   }
-  .page-desc {
+  .page-desc, .page-desc p {
     font-size: 1.1rem;
   }
   /* pet page */

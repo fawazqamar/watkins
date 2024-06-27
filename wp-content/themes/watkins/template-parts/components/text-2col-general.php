@@ -26,7 +26,9 @@ if(isset($page_label) && $page_label == 'services') {
 
 		<?php endif; ?>
 
-		<?php echo $desc; ?>
+        <div class="page-desc">
+		    <?php echo $desc; ?>
+        </div>
     </div>
 
     <div class="<?php echo $desc_class;?>">
