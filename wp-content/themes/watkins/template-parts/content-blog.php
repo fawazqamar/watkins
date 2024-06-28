@@ -9,18 +9,18 @@
 
 ?>
 
-<?php if ( is_single()) : ?>
+<?php if ( is_single() ) : ?>
 
-<!--    <div class="post-image">-->
-	    <?php watkins_post_thumbnail(); ?>
-<!--    </div>-->
+    <!--    <div class="post-image">-->
+	<?php watkins_post_thumbnail(); ?>
+    <!--    </div>-->
 
     <div class="content">
         <h2 class="color-green">
-	        <?php the_title(); ?>
+			<?php the_title(); ?>
         </h2>
         <div class="matter">
-            <?php the_content() ;?>
+			<?php the_content(); ?>
         </div>
     </div>
 
@@ -33,10 +33,9 @@
         </div>
 
         <h2 class="color-green post-heading">
-            <!--        <a href="--><?php //echo esc_url( get_permalink() ) ;?><!--" title="-->
-			<?php //the_title(); ?><!--">-->
-			<?php the_title(); ?>
-            <!--        </a>-->
+            <a href="<?php echo esc_url( get_permalink() ); ?>" title="<?php the_title(); ?>" class="color-green post-heading">
+				<?php the_title(); ?>
+            </a>
         </h2>
 
         <div class="post-descr">
@@ -44,10 +43,10 @@
 				sprintf(
 					wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Read more<span class="screen-reader-text"> "%s"</span>', 'watkins' ),
+						__( 'Read more<span class="screen-reader-text color-green post-heading"> "%s"</span>', 'watkins' ),
 						array(
 							'span' => array(
-								'class' => array(),
+								'class' => array('color-green post-heading'),
 							),
 						)
 					),

@@ -18,6 +18,12 @@ get_header();
                 <h2 class="color-black">Our news</h2>
                 <nav>
                     <ul class="post-filter">
+                        <li>
+                            <a href="<?php echo get_home_url(); ?>/our-news">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/heart.png" alt="heart-icon" />
+                                <span>All</span>
+                            </a>
+                        </li>
 						<?php
 
 						$category = get_category( get_query_var( 'cat' ) );

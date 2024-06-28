@@ -2279,6 +2279,9 @@ img#heart {
   grid-area: 2/1/3/3;
   margin-top: 1rem;
 }
+.blog-post .more-link {
+  color: rgb(229, 0, 100);
+}
 @media (max-width: 767px) {
   .blog-post .post-descr {
     grid-area: 3/1/4/2;

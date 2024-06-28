@@ -4,6 +4,7 @@
  */
 
 get_header();
+$footer_links = null;
 ?>
     <section class="container">
 		<?php if ( have_rows( 'pages_block_components' ) ) :
@@ -11,6 +12,7 @@ get_header();
 
 				if ( get_row_layout() == 'blocks_2col' ) {
                     $page_label = 'hydrovet';
+					$footer_links                   = get_sub_field( 'links' );
 					include get_theme_file_path( 'template-parts/components/text-2col-hydro.php' );
 				}
 				if ( get_row_layout() == 'carousel_block' ) {
@@ -26,26 +28,21 @@ get_header();
 
 
         <!-- home links in mobile screen -->
-        <ul class="home-links-mobile fade-in">
-            <li>
-                <a href="/home.html"> About </a>
-            </li>
-            <li>
-                <a href="../pages/book_appointment.html"> Book an appointment </a>
-            </li>
-            <li>
-                <a href="/home.html"> Opening times </a>
-            </li>
-            <li>
-                <a href="../pages/hydro_vet.html"> Hydro.vet </a>
-            </li>
-            <li>
-                <a href="/home.html"> Pet Health Club </a>
-            </li>
-            <li>
-                <a href="/home.html"> More about us </a>
-            </li>
-        </ul>
+	    <?php if ( $footer_links ) : ?>
+            <ul class="home-links-mobile fade-in">
+			    <?php foreach ( $footer_links as $link ) : $link = ( isset( $link['link'] ) ) ? $link['link'] : null; ?>
+				    <?php if ( $link ): ?>
+                        <li>
+                            <a href="<?php echo $link['url']; ?>" target="<?php echo $link['target']; ?>"
+                               title="<?php echo $link['title']; ?>">
+							    <?php echo $link['title']; ?>
+                            </a>
+                        </li>
+				    <?php endif; ?>
+			    <?php endforeach; ?>
+            </ul>
+	    <?php endif; ?>
+
     </section>
 
 

@@ -109,28 +109,6 @@ $teams_desc    = get_field( 'teams_desc' );
         </div>
 
 
-        <!-- home links in mobile screen -->
-        <ul class="home-links-mobile fade-in">
-            <li>
-                <a href="/home.html"> About </a>
-            </li>
-            <li>
-                <a href="../pages/book_appointment.html"> Book an appointment </a>
-            </li>
-            <li>
-                <a href="/home.html"> Opening times </a>
-            </li>
-            <li>
-                <a href="../pages/hydro_vet.html"> Hydro.vet </a>
-            </li>
-            <li>
-                <a href="/home.html"> Pet Health Club </a>
-            </li>
-            <li>
-                <a href="/home.html"> More about us </a>
-            </li>
-        </ul>
-
     </section>
 
 <?php

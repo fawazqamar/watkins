@@ -4,7 +4,7 @@ const menuToggle = document.getElementById("menu-toggle");
 const menu = document.querySelector(".menu");
 const navContainer = document.querySelector(".nav-container");
 const menuLayer = document.querySelector(".menu-layer");
-const hasSubMenu = document.querySelectorAll(".has-submenu > a, .menu-item-has-children > a");
+const hasSubMenu = document.querySelectorAll(":scope .menu-item-has-children > a");
 const subMenuInner = document.querySelectorAll(".submenu, .sub-menu");
 const menuWrapper = document.querySelector(".menu-wrapper");
 const menuLinks = document.querySelectorAll(".menu a");
@@ -107,7 +107,8 @@ const toggleMenu = () => {
 
 // Handle sub-menu clicks
 const handleSubMenuClick = (e, submenulink) => {
-  e.stopPropagation(); // Prevents the main menu from closing
+    console.log({submenulink} );
+  // e.stopPropagation(); // Prevents the main menu from closing
   const animations = applyAnimations();
 
   // Toggle sub-menu visibility
@@ -134,9 +135,11 @@ const addEventListeners = () => {
   menuToggle.addEventListener("click", toggleMenu);
 
   hasSubMenu.forEach((subMenu) => {
+      console.log({subMenu} );
     subMenu.addEventListener("click", function (e) {
       e.preventDefault(); // Prevent default link behavior for sub-menu links
       const submenulink = this.nextElementSibling;
+      console.log({submenulink} );
       handleSubMenuClick(e, submenulink);
     });
   });
@@ -159,22 +162,22 @@ menuItem.forEach((item) => {
   });
 
   // Click logic
-  link.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    // Remove 'active' class from all menu items
-    menuItem.forEach((i) => {
-      i.classList.remove("active");
-      i.querySelector("a").style.fontWeight = "";
-    });
-
-    // Add 'active' class to the clicked item
-    item.classList.add("active");
-    // this.style.fontWeight = 'bold';
-    document.querySelectorAll(".submenu, .sub-menu").forEach((sub) => {
-      sub.style.display = "none";
-    });
-  });
+  // link.addEventListener("click", function (e) {
+  //   e.preventDefault();
+  //
+  //   // Remove 'active' class from all menu items
+  //   menuItem.forEach((i) => {
+  //     i.classList.remove("active");
+  //     i.querySelector("a").style.fontWeight = "";
+  //   });
+  //
+  //   // Add 'active' class to the clicked item
+  //   item.classList.add("active");
+  //   // this.style.fontWeight = 'bold';
+  //   document.querySelectorAll(".submenu, .sub-menu").forEach((sub) => {
+  //     sub.style.display = "none";
+  //   });
+  // });
 });
 
 // Function to handle screen size changes
@@ -376,7 +379,10 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentMember = 0;
 
   // Add hidden class initially
-  teamCarousel.classList.add('hidden');
+    if (typeof teamCarousel !== 'undefined' && teamCarousel !== null)  {
+        teamCarousel.classList.add('hidden');
+    }
+
 
   function setPosition(filteredMembers) {
       filteredMembers.forEach((s, i) => {
@@ -474,9 +480,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Remove hidden class after initial positioning
-  setTimeout(() => {
-      teamCarousel.classList.remove('hidden');
-  }, 1000);
+    if (typeof teamCarousel !== 'undefined' && teamCarousel !== null) {
+        setTimeout(() => {
+            teamCarousel.classList.remove('hidden');
+        }, 1000);
+    }
 
   window.addEventListener('resize', () => {
       if (window.innerWidth <= 767) {
