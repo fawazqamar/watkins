@@ -42,6 +42,13 @@
 
 
 <div id="page" class="site">
+
+	<?php
+	$page_background_color           = get_field( 'page_background_color' );
+	if($page_background_color){
+		$page_background_color = 'style="background-color: ' . $page_background_color . ' !important;"';
+	}
+	?>
 	<?php if ( is_front_page() ) : ?>
         <div class="pltext pl">
             <p class="pltxt1">WELCOME</p>
@@ -85,13 +92,42 @@
             </div>
         </nav>
 
+	<?php elseif(is_page_template('phc-template.php')) : ?>
+        <nav class="nav-container p-fixed home-nav" <?php echo $page_background_color ;?>>
+            <div class="logo">
+                <div class="logo-inner">
+                    <div class="logo-part1">
+                        <img
+                                src="<?php bloginfo( 'template_url' ); ?>/assets/images/l1-01-light.svg"
+                                alt="Logo Part 1"
+                                class="logo-svg1 logo-svg"/>
+                    </div>
+                    <div class="logo-part2">
+                        <img
+                                src="<?php bloginfo( 'template_url' ); ?>/assets/images/l2-01a.svg"
+                                alt="Logo Part 2a"
+                                class="logo-svg2b logo-svg"
+                                id="heart"/>
+                        <img
+                                src="<?php bloginfo( 'template_url' ); ?>/assets/images/l2-01.svg"
+                                alt="Logo Part 2"
+                                class="logo-svg2a logo-svg"/>
+                    </div>
+                    <div class="logo-part3">
+                        <img
+                                src="<?php bloginfo( 'template_url' ); ?>/assets/images/l3-01-light.svg"
+                                alt="Logo Part 3"
+                                class="logo-svg3 logo-svg"/>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+            </div>
+        </nav>
 	<?php else : ?>
-    <?php
-		$page_background_color           = get_field( 'page_background_color' );
-		if($page_background_color){
-			$page_background_color = 'style="background-color: ' . $page_background_color . ' !important;"';
-		}
-    ?>
+
         <nav class="nav-container p-fixed home-nav" <?php echo $page_background_color ;?>>
             <div class="logo">
                 <div class="logo-inner">

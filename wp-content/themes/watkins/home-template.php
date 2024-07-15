@@ -14,6 +14,14 @@ $home_links_footers = null;
 					$home_links_footers                   = get_sub_field( 'links' );
 					include get_theme_file_path( 'template-parts/components/text-2col.php' );
 				}
+				if ( get_row_layout() == 'blocks_2col_links' ) {
+					$page_label = 'hydrovet';
+					$footer_links                   = get_sub_field( 'links' );
+					include get_theme_file_path( 'template-parts/components/block-2col-links.php' );
+				}
+				if ( get_row_layout() == 'block_full_width_text' ) {
+					include get_theme_file_path( 'template-parts/components/full-width-text.php' );
+				}
 				if ( get_row_layout() == 'carousel_block' ) {
 					include get_theme_file_path( 'template-parts/components/carousel.php' );
 				}
